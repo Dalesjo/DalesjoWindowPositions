@@ -1,9 +1,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ;
+; https://github.com/Dalesjo/DalesjoWindowPositions/
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ;
 ; Set workingdirectory to scripts directory and config file name
 ; make sure you have writing persmissions to be able to save
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ;
 SetWorkingDir %A_ScriptDir%
-config = %A_MyDocuments%\DalesjoWindowPositions.ini
+config = %A_AppData%\DalesjoWindowPositions.ini
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; ;
 ; Reading default names of the diffrent membank names. we have a total of 
@@ -90,7 +94,7 @@ membank_name()
 {
 	global
 
-	InputBox memname_%membank%, Gruppnamn, Skriv in gruppnamnet på fönsterpositionerna %o_start% till %o_stop%,,340,120,,,,, % memname_%membank%
+	InputBox memname_%membank%, Memorybank, New name of memorybank %o_start% till %o_stop%,,400,130,,,,, % memname_%membank%
 	
 	IniWrite, % memname_%membank%, %config%, Windows, memname_%membank%
 }
@@ -155,7 +159,7 @@ membank_set(i)
 
 #NumpadMult::
 	WinGetTitle, Title, A
-	InputBox, newTitle, Nytt namn på fönster, Skriv in ditt nya namn på fönstret, , 640, 130
+	InputBox, newTitle, New name, Change name of the active window %Title%, , 800, 150,,,,, %Title%
 	WinSetTitle, %Title%,,%newTitle%
 RETURN
 
